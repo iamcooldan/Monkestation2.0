@@ -509,8 +509,9 @@ Behavior that's still missing from this component that original food items had t
 		else if(foodtypes & H.dna.species.liked_food)
 			food_taste_reaction = FOOD_LIKED
 
-	if(HAS_TRAIT(parent, TRAIT_FOOD_SILVER)) // it's not real food
-		food_taste_reaction = isjellyperson(H) ? FOOD_LIKED : FOOD_TOXIC
+	//if(HAS_TRAIT(parent, TRAIT_FOOD_SILVER))
+		//food_taste_reaction = isjellyperson(H) ? FOOD_LIKED : FOOD_TOXIC
+		//monkestation edit: removed to make silvers edible.
 
 	switch(food_taste_reaction)
 		if(FOOD_TOXIC)
