@@ -27,9 +27,18 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 	blood_volume = BLOOD_VOLUME_NORMAL
 	ai_controller = /datum/ai_controller/basic_controller/pig
+	/// does this pig contribute to the pig cap?
+	var/contributes_to_pigcap = TRUE
 
 /mob/living/basic/pig/Initialize(mapload)
 	. = ..()
+	if(contributes_to_pigcap)
+		var/cap = CONFIG_GET(number/pigcap)
+		if (LAZYLEN(SSmobs.cubepigs) > cap)
+			do_sparks(rand(3, 4), FALSE, src)
+			visible_message(span_warning("ERROR: Bluespace Disturbance Detected. More than [cap] entities will disturb bluespace harmonics. Entity eradicated"))
+			return INITIALIZE_HINT_QDEL
+		SSmobs.cubepigs |= src
 	AddElement(/datum/element/pet_bonus, "oinks!")
 	AddElement(/datum/element/ai_retaliate)
 	AddElement(/datum/element/ai_flee_while_injured)
