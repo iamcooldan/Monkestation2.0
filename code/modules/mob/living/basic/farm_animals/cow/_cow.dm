@@ -43,6 +43,7 @@
 			do_sparks(rand(3, 4), FALSE, src)
 			visible_message(span_warning("ERROR: Bluespace Disturbance Detected. More than [cap] entities will disturb bluespace harmonics. Entity eradicated"))
 			return INITIALIZE_HINT_QDEL
+		SSmobs.cubecows |= src
 	AddComponent(/datum/component/tippable, \
 		tip_time = 0.5 SECONDS, \
 		untip_time = 0.5 SECONDS, \
