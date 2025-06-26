@@ -33,8 +33,16 @@
 	var/tame_message = "lets out a happy moo"
 	/// singular version for player cows
 	var/self_tame_message = "let out a happy moo"
+	/// does this cow contribute to the cowcap?
+	var/contributes_to_cowcap = TRUE
 
 /mob/living/basic/cow/Initialize(mapload)
+	if(contributes_to_cowcap)
+		var/cap = CONFIG_GET(number/cowcap)
+		if (LAZYLEN(SSmobs.cubecows) > cap)
+			do_sparks(rand(3, 4), FALSE, src)
+			visible_message(span_warning("ERROR: Bluespace Disturbance Detected. More than [cap] entities will disturb bluespace harmonics. Entity eradicated"))
+			return INITIALIZE_HINT_QDEL
 	AddComponent(/datum/component/tippable, \
 		tip_time = 0.5 SECONDS, \
 		untip_time = 0.5 SECONDS, \
