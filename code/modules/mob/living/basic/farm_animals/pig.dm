@@ -37,6 +37,7 @@
 		if (LAZYLEN(SSmobs.cubepigs) > cap)
 			do_sparks(rand(3, 4), FALSE, src)
 			visible_message(span_warning("ERROR: Bluespace Disturbance Detected. More than [cap] entities will disturb bluespace harmonics. Entity eradicated"))
+			ai_controller = null
 			return INITIALIZE_HINT_QDEL
 		SSmobs.cubepigs |= src
 	AddElement(/datum/element/pet_bonus, "oinks!")

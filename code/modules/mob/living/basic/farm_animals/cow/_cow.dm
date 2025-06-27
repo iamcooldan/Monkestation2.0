@@ -42,6 +42,7 @@
 		if (LAZYLEN(SSmobs.cubecows) > cap)
 			do_sparks(rand(3, 4), FALSE, src)
 			visible_message(span_warning("ERROR: Bluespace Disturbance Detected. More than [cap] entities will disturb bluespace harmonics. Entity eradicated"))
+			ai_controller = null
 			return INITIALIZE_HINT_QDEL
 		SSmobs.cubecows |= src
 	AddComponent(/datum/component/tippable, \
