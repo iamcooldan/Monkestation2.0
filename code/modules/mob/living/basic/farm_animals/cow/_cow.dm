@@ -57,6 +57,10 @@
 	. = ..()
 	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_types)
 
+/mob/living/basic/cow/Destroy()
+	SSmobs.cubecows -= src
+	return ..()
+
 ///wrapper for the udder component addition so you can have uniquely uddered cow subtypes
 /mob/living/basic/cow/proc/udder_component()
 	AddComponent(/datum/component/udder)
